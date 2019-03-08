@@ -5,3 +5,8 @@ class IsOwner(permissions.BasePermission):
         #if request.method in permissions.SAFE_METHODS:
         #    return True
         return obj.owner == request.user
+
+class IsOwnerOfAccount(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+
+        return obj.account.owner == request.user
